@@ -4,17 +4,19 @@
       <h1>My Friends</h1>
     </header>
     <ul>
+      <!-- Pass props to child component (FriendContact.vue) -->
+      <!-- is-favourite must be "1" (favourite) or "0" (not favourite) to pass validation -->
       <friend-contact
         name="Rikuto Mikado"
         phone-number="0123-45678-90"
         email-adress="rikuto@example.com"
         is-favourite="1"
       ></friend-contact>
+      <!-- When is-favourite is omitted, defaults to "0" in child component -->
       <friend-contact
         name="Jun Sato"
         phone-number="0987-65432-10"
         email-adress="jun@example.com"
-        is-favourite="0"
       ></friend-contact>
     </ul>
   </section>

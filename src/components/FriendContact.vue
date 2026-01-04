@@ -14,12 +14,38 @@
 <script>
 export default {
     // Data received from parent component (read-only)
-    props: [
-        'name',
-        'phoneNumber',
-        'emailAdress',
-        'isFavourite'
-    ],
+    // props: [
+    //     'name',
+    //     'phoneNumber',
+    //     'emailAdress',
+    //     'isFavourite'
+    // ],
+
+    // Switched to object syntax for explicit type validation and better prop definition
+    props: {
+        name: {
+            type: String,
+            required: true,
+        },
+        phoneNumber: {
+            type: String,
+            required: true,
+        },
+        emailAdress: {
+            type: String,
+            required: true,
+        },
+        isFavourite: {
+            type: Boolean,
+            required: false,
+            default: false,
+            // Boolean type automatically validates true/false values from parent component
+            // When passed from App.vue, string values are auto-converted:
+            // - is-favourite="true" or :is-favourite="true" → true
+            // - is-favourite="false" or :is-favourite="false" → false
+            // - is-favourite (no value) → true
+        }
+    },
     data() {
         return {
             detailsVisible: false,
