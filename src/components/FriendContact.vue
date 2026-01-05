@@ -1,8 +1,9 @@
 <template>
   <li>
     <!-- Use local friendIsFavourite (props cannot be mutated directly) -->
-    <h2>{{ name }} {{ friendIsFavourite === '1' ? '(Favourite)' : ''}}</h2>
-    <button @click="toggleDetails">Toggle Favourite</button>
+    <!-- Ternary operator: if friendIsFavourite is true, display '(Favourite)', otherwise display empty string -->
+    <h2>{{ name }} {{ friendIsFavourite ? '(Favourite)' : ''}}</h2>
+    <button @click="toggleFavourite">Toggle Favourite</button>
     <button @click="toggleDetails">{{ detailsVisible ? 'Hide' : 'Show' }} Details</button>
     <ul v-if="detailsVisible">
         <li><strong>Phone: </strong>{{ phoneNumber }}</li>
@@ -49,12 +50,6 @@ export default {
     data() {
         return {
             detailsVisible: false,
-            friend: {
-                id: 'rikuto',
-                name: 'Rikuto Mikado',
-                phone: '0123-45678-90',
-                email: 'rikuto@example.com',
-            },
             // Important: Props cannot be mutated directly, so copy to local data
             friendIsFavourite: this.isFavourite
         };
@@ -65,13 +60,9 @@ export default {
         },
         // Modify local friendIsFavourite (not a prop, so mutation is allowed)
         toggleFavourite() {
-            if (this.friendIsFavourite === '1') {
-                this.friendIsFavourite = '0';
-            } else {
-                this.friendIsFavourite = '1';
-            }
-        }
-    }
+            this.friendIsFavourite = !this.friendIsFavourite;
+        },
+    },
 };
 </script>
 
