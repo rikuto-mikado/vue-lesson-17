@@ -24,6 +24,10 @@ export default {
 
     // Switched to object syntax for explicit type validation and better prop definition
     props: {
+        id: {
+            type: String,
+            required: true
+        },
         name: {
             type: String,
             required: true,
@@ -60,7 +64,8 @@ export default {
         },
         // Modify local friendIsFavourite (not a prop, so mutation is allowed)
         toggleFavourite() {
-            this.friendIsFavourite = !this.friendIsFavourite;
+            // Emit 'toggle-favourte' event to parent component
+            this.$emit('toggle-favourte', this.id);
         },
     },
 };

@@ -9,10 +9,12 @@
       <friend-contact
         v-for="friend in friends"
         :key="friend.id"
+        :id="friend.id"
         :name="friend.name"
         :phone-number="friend.phone"
         :email-adress="friend.email"
         :is-favourite="friend.isFavourite"
+        @toggle-favourite="toggleFavourite"
       ></friend-contact>
     </ul>
   </section>
@@ -41,7 +43,9 @@ export default {
         }
     },
     methods: {
-
+      toggleFavouriteStatus() {
+        alert('This works!!')
+      }
     },
 };
 </script>
