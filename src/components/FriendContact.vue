@@ -1,8 +1,8 @@
 <template>
   <li>
-    <!-- Use local friendIsFavourite (props cannot be mutated directly) -->
-    <!-- Ternary operator: if friendIsFavourite is true, display '(Favourite)', otherwise display empty string -->
-    <h2>{{ name }} {{ friendIsFavourite ? '(Favourite)' : ''}}</h2>
+    <!-- Display name with favourite status from props (isFavourite) -->
+    <!-- Ternary operator: if isFavourite is true, display '(Favourite)', otherwise display empty string -->
+    <h2>{{ name }} {{ isFavourite ? '(Favourite)' : ''}}</h2>
     <button @click="toggleFavourite">Toggle Favourite</button>
     <button @click="toggleDetails">{{ detailsVisible ? 'Hide' : 'Show' }} Details</button>
     <ul v-if="detailsVisible">
@@ -51,11 +51,26 @@ export default {
             // - is-favourite (no value) → true
         }
     },
+    // Declare custom events that this component can emit to parent
+    // Helps with documentation and IDE autocomplete
+    // Best practice: explicitly list all events this component emits
+    // emits: [
+    //     'toggle-favourte'
+    // ],
+    emits: {
+        'toggle-favourite': function(id) {
+            if (id) {
+                return true;
+            } else {
+                // Display warning in browser console (for development/debugging)
+                console.warn('Id is missing!!')
+                return false;
+            }
+        }
+    },
     data() {
         return {
-            detailsVisible: false,
-            // Important: Props cannot be mutated directly, so copy to local data
-            friendIsFavourite: this.isFavourite
+            detailsVisible: false
         };
     },
     methods: {
