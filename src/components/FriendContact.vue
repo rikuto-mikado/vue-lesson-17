@@ -54,20 +54,20 @@ export default {
     // Declare custom events that this component can emit to parent
     // Helps with documentation and IDE autocomplete
     // Best practice: explicitly list all events this component emits
-    // emits: [
-    //     'toggle-favourte'
-    // ],
-    emits: {
-        'toggle-favourite': function(id) {
-            if (id) {
-                return true;
-            } else {
-                // Display warning in browser console (for development/debugging)
-                console.warn('Id is missing!!')
-                return false;
-            }
-        }
-    },
+    emits: [
+        'toggle-favourte'
+    ],
+    // emits: {
+    //     'toggle-favourite': function(id) {
+    //         if (id) {
+    //             return true;
+    //         } else {
+    //             // Display warning in browser console (for development/debugging)
+    //             console.warn('Id is missing!!')
+    //             return false;
+    //         }
+    //     }
+    // },
     data() {
         return {
             detailsVisible: false
