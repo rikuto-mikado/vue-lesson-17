@@ -3,7 +3,7 @@
     <header>
       <h1>My Friends</h1>
     </header>
-    <new-friend></new-friend>
+    <new-friend @add-contact="addContact"></new-friend>
     <ul>
       <!-- Loop through friends array and pass props to child component (FriendContact.vue) -->
       <!-- :is-favourite binds a boolean value (true/false) from friend.isFavourite -->
@@ -47,6 +47,15 @@ export default {
       toggleFavouriteStatus(friendId) {
         const identifiedFriend = this.friends.find(friend => friend.id === friendId);
         identifiedFriend.isFavourite = !identifiedFriend.isFavourite;
+      },
+      addContact(name, phone, email) {
+        const newFriendContact = {
+          id: new Date().toISOSting(),
+          name: name,
+          phone: phone,
+          email: email,
+          isFavourite: false
+        };
       }
     },
 };
