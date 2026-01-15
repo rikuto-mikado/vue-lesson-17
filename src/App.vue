@@ -56,6 +56,7 @@ export default {
           email: email,
           isFavourite: false
         };
+        this.friends.push(newFriendContact);
       }
     },
 };
