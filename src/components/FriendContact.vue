@@ -9,6 +9,7 @@
         <li><strong>Phone: </strong>{{ phoneNumber }}</li>
         <li><strong>Email: </strong>{{ emailAdress }}</li>
     </ul>
+    <button @click="$emit('delete', id)">Delete</button>
   </li>
 </template>
 
@@ -55,7 +56,8 @@ export default {
     // Helps with documentation and IDE autocomplete
     // Best practice: explicitly list all events this component emits
     emits: [
-        'toggle-favourte'
+        'toggle-favourte',
+        'delete'
     ],
     // emits: {
     //     'toggle-favourite': function(id) {
